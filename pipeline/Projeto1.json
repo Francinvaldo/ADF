@@ -9,10 +9,53 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "entrada_data",
-					"value": ""
+					"value": {
+						"value": "@pipeline().parameters.pr_data_entrada_valor",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Datas",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(variables('entrada_data'),'20230513')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "valor_verdadeiro",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "entrada_data",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							}
+						}
+					]
 				}
 			}
 		],
+		"parameters": {
+			"pr_data_entrada_valor": {
+				"type": "String",
+				"defaultValue": "20230513"
+			}
+		},
 		"variables": {
 			"entrada_data": {
 				"type": "String"
