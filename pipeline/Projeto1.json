@@ -1,6 +1,23 @@
 {
 	"name": "Projeto1",
 	"properties": {
+		"activities": [
+			{
+				"name": "Datas",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "entrada_data",
+					"value": ""
+				}
+			}
+		],
+		"variables": {
+			"entrada_data": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
